@@ -1,5 +1,6 @@
 import numpy as np
-
+import matplotlib.pyplot as plt
+from scipy.optimize import minimize
 
 def himmelblaus_function(input_vector) -> float:
     """
@@ -21,3 +22,24 @@ def ad_campaign_profit(input_vector):
     x, y, z, _ = input_vector
     r = 60 - (np.sin(x + y) + (x - y)**2 - 1.5*x + 2.5*y + 1) + z/10
     return r
+
+sample_input = np.array([0.5, 0.5, 0.5, 0.5])
+print(ad_campaign_profit(sample_input))  # should be around 60
+
+# my solution
+# test_pts = []
+
+
+# def spending_config_wrapper(input_vector) -> int:
+#     """search function that will try to find the best way
+#     to spend money across 4 different advertising campaigns. 
+#     """
+#     test_pts.append(input_vector)
+#     return ad_campaign_profit(input_vector)
+
+# result = minimize(spending_config_wrapper, x0=[0.5, 0.5, 0.5, 0.5], method='COBYLA')
+
+# for pt in test_pts:
+#     plt.scatter(pt[0], pt[1], color='black', s=10)
+
+# plt.show()
